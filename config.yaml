@@ -1,0 +1,6 @@
+COLLECTION_NAME: "big-basket-products-all"
+DATA_PATH: 'C:/Users/Logeshkumar/OneDrive/Documents/BigBasket.csv/BigBasket.csv'
+BASE_URL: "https://api.deepinfra.com/v1/openai"
+LLM_MODEL: "meta-llama/Meta-Llama-3.1-70B-Instruct"
+EMBED_MODEL: "BAAI/bge-large-en-v1.5"
+API_KEY: ""
