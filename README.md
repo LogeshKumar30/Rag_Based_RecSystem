@@ -6,13 +6,24 @@ This work presents a real-time product recommendation system based on **Retrieva
 
 ### Design overview
 #### Vector-database
+- A vector database in RAG stores document embeddings and enables semantic similarity search to retrieve relevant context for LLM response generation.
 - We utilise the Chromadb package to generate a localised version of vector-database. To generate the database, we create the embbeddings of the product database using an open-source **BAAI/bge-large-en-v1.5** embedding generator with embedding dimension of 1024. The vector database are further stored in chunks of 32 for faster retreival.
 - Based on the user-query, a total of n recommendations can be extracted.
+**  need of vector db**
+  1.Retrieving relevant data from a vector DB
+  2.Augmenting the prompt with that data
+  3.Generating a grounded, accurate answer
 
 #### Langchain
 - A customised prompt that analyses chat history and current user query which further powers the LLM to provide valuable suggestions to the user.
 - The RecSys utilizes the **RetrievalQAWithSourcesChain** module alongside **ConversationSummaryMemory** to preserve chat history, integrating it with retrieved product documents from ChromaDB database to effectively address follow-up queries.
 - We introduced a feature that allows seamless **context switching** within the same window through an **auxiliary agent**, which detects when the user seeks recommendations in a different category. This functionality leverages a secondary prompt to analyze chat history and the current query, determining contextual similarity. If a shift is detected, the system resets memory and begins anew, ensuring smooth transitions without disrupting the LLM's behavior.
+  
+**Qdrant** 
+ It is an open-source vector database used to store and search embedding vectors efficiently for AI applications.
+
+**Need:**
+Qdrant is needed to quickly retrieve the most relevant data based on semantic similarity, enabling accurate search, recommendation systems, and Retrieval-Augmented Generation (RAG) with large language models.
 
 #### Streamlit Frontend
 - A web-interface is designed to abstract the underlying framework and provides the user the with a conversational recommendation system.
